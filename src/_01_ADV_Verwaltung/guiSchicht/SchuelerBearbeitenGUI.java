@@ -152,8 +152,14 @@ public class SchuelerBearbeitenGUI extends JDialog implements ActionListener
 			}
             aktuellerSchueler = aktuelleKlasse.suchenSchueler(txtSchuelerNr.getName());
 
-			if (aktuelleKlasse == null) {
+			if (aktuellerSchueler == null) {
 				JOptionPane.showMessageDialog(this, "Schüler existiert nicht!");
+			} else {
+				txtName.setText(aktuellerSchueler.getName());
+				txtVorname.setText(aktuellerSchueler.getVorname());
+				txtAdresse.setText(aktuellerSchueler.getAdresse());
+				txtKlasse.setText(aktuelleKlasse.getKl_Bez());
+				txtSchuelerNr.setText(aktuellerSchueler.getSchuelerNr());
 			}
 			dispose();
 		}
