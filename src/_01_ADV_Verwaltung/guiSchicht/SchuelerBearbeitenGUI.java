@@ -146,14 +146,20 @@ public class SchuelerBearbeitenGUI extends JDialog implements ActionListener
 		}
 		else {
 			aktuelleKlasse = ADV.suchenKlasse(txtKlasse.getText());
-            assert aktuelleKlasse != null;
+
+			if (aktuelleKlasse == null) {
+				JOptionPane.showMessageDialog(this, "Klasse existiert nicht!");
+			}
             aktuellerSchueler = aktuelleKlasse.suchenSchueler(txtSchuelerNr.getName());
+
+			if (aktuelleKlasse == null) {
+				JOptionPane.showMessageDialog(this, "Schüler existiert nicht!");
+			}
 			dispose();
 		}
 	}
 
-	private void datenUebernehmen()
-	{
+	private void datenUebernehmen() {
 		Schueler neuerSchueler;
 		Klasse klasse = ADV.suchenKlasse(txtKlasse.getText());
 		if (klasse == null)
