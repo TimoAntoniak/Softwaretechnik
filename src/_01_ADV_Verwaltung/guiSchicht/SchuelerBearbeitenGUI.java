@@ -28,6 +28,9 @@ public class SchuelerBearbeitenGUI extends JDialog implements ActionListener
 	private JTextField txtKlasse;
 	private JTextField txtSchuelerNr;
 
+	private Klasse aktuelleKlasse;
+	private Schueler aktuellerSchueler;
+
 	/**
 	 * Create the dialog.
 	 * Dieser Dialog soll "modal" sein. Das bedeutet, dass das aufrufende
@@ -138,20 +141,13 @@ public class SchuelerBearbeitenGUI extends JDialog implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		if (e.getActionCommand().equals("Uebernehmen"))  // Prüfen, ob Übernehmen Button geklickt
-		{
-			if (txtSchuelerNr.getText().isEmpty() || txtName.getText().isEmpty() || txtVorname.getText().isEmpty()
-					|| txtKlasse.getText().isEmpty())
-			{
-				JOptionPane.showMessageDialog(this, "SchülerNr, Name, Vorname und Klasse eintragen");
-			}
-			else
-			{
-				this.datenUebernehmen();
-			}
+		if (e.getActionCommand().equals("cancel")) {
+			dispose();
 		}
-		else // Abbrechen geklickt --> einfach Fenster schließen
-		{
+		else {
+			aktuelleKlasse = ADV.suchenKlasse(txtKlasse.getText());
+            assert aktuelleKlasse != null;
+            aktuellerSchueler = aktuelleKlasse.suchenSchueler(txtSchuelerNr.getName());
 			dispose();
 		}
 	}
