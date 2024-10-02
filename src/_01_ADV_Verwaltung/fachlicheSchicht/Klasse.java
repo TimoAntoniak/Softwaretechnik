@@ -52,13 +52,10 @@ public class Klasse
 
 	public Schueler suchenSchueler(String sSchuelerNr)
 	{
-		Schueler gesuchterSchueler = null;
-
-		/*
-		 * hier den Quellcode um Suchschleife ergänzen
-		 */
-		
-		return gesuchterSchueler;
+		for (Schueler schueler :  alleSchueler) {
+			if (sSchuelerNr.equals(schueler.getSchuelerNr())) return schueler;
+		}
+		return null;
 	}
 
 	public boolean loeschenSchueler(String sSchuelerNr)
